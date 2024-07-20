@@ -3,8 +3,11 @@ package br.ce.wcaquino.tasks.functional;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.junit.Assert;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -12,6 +15,11 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 public class TasksTest {
+
+    @BeforeClass
+    public static void setUpClass() {
+        Logger.getLogger("org.openqa.selenium").setLevel(Level.WARNING);
+    }
     
     @Test
     public void cadastrarTarefaSucesso() throws InterruptedException, MalformedURLException {
@@ -40,7 +48,7 @@ public class TasksTest {
         
         // Verifica a mensagem de sucesso
         String message = driver.findElement(By.id("message")).getText();
-        Assert.assertEquals("Sucesss!", message);
+        Assert.assertEquals("Sucess!", message);
         
         // Fecha o navegador
         driver.quit();
@@ -78,6 +86,7 @@ public class TasksTest {
         // Fecha o navegador
         driver.quit();
     }
+
     @Test
     public void removerTarefaComSucesso() throws InterruptedException, MalformedURLException {
         // Define o caminho do ChromeDriver
@@ -110,7 +119,7 @@ public class TasksTest {
         driver.findElement(By.xpath("//*[@id=\"todoTable\"]/tbody/tr[1]/td[3]/a")).click();
         driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
       
-     
+        // Fecha o navegador
         driver.quit();
     }
 }
