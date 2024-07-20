@@ -105,7 +105,7 @@ public class TasksTest {
         
         // Verifica a mensagem de sucesso
         String message = driver.findElement(By.id("message")).getText();
-        Assert.assertEquals("Sucess!", message);
+        Assert.assertEquals("Sucesss!", message);
         
         driver.findElement(By.xpath("//*[@id=\"todoTable\"]/tbody/tr[1]/td[3]/a")).click();
         driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
